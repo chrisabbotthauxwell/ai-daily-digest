@@ -66,5 +66,12 @@ Last verified: 2026-10-07 against Microsoft Learn / pricing pages. Re-verify bef
 ## Risks
 - Free allowances change; mitigated by the verify date and monthly check.
 - Cosmos free tier opt-in can't be added later; a mistake means recreating the account.
-- Reddit API terms and rate limits may restrict use (check before plan 03).
+- Bluesky search endpoint/limits are unconfirmed against official docs (check before plan 03). X/Twitter was rejected: no free API tier for reads/search as of 2026 (third-party sources; verify in the X console).
 - Subscription-wide grants are shared with anything else running in the subscription.
+
+## Decisions confirmed by the owner (2026-10-07)
+- Region `uksouth`; pay-as-you-go subscription with no existing free-tier Cosmos DB account.
+- `sources.yaml` baked into the ingest image (revisit if it becomes a problem).
+- SWA deploy token stored as a GitHub Actions repo secret (`AZURE_STATIC_WEB_APPS_API_TOKEN`); the only stored secret.
+- Reddit and GitHub trending dropped from v1 (moved to plan 08); X/Twitter rejected on cost.
+- PR previews: SWA built-in previews; an ephemeral Container Apps revision per PR is an optional experiment (plan 06), with the shared production API as fallback.

@@ -2,7 +2,7 @@
 
 A consolidated daily feed of AI news with links to articles, built as an end-to-end tech demo on Azure using **only always-free services** and developed with Claude Code from desktop and mobile.
 
-Sources (RSS feeds, Hacker News, arXiv cs.AI/cs.CL, GitHub trending, Reddit) are declared in [`sources.yaml`](sources.yaml). Adding one is a tiny PR that CI deploys. v1 has no LLM summaries: items are ranked by source weight, recency and score.
+Sources (RSS feeds, Hacker News, arXiv cs.AI/cs.CL, Hugging Face Daily Papers, Bluesky, Lobsters) are declared in [`sources.yaml`](sources.yaml). Adding one is a tiny PR that CI deploys. v1 has no LLM summaries: items are ranked by source weight, recency and score.
 
 ## Status
 
@@ -38,7 +38,7 @@ flowchart LR
   GHCR -.pull.-> JOB
   GHCR -.pull.-> API
   SRC -.baked into image.-> JOB
-  Ext[RSS / HN / arXiv / GitHub / Reddit] --> JOB
+  Ext[RSS / HN / arXiv / HF Papers / Bluesky / Lobsters] --> JOB
   User((Browser / phone)) --> SWA --> API
 ```
 

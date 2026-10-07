@@ -3,7 +3,7 @@
 #
 # sources:
 #   - id: example-blog          # unique, kebab-case
-#     type: rss                 # rss | hackernews | arxiv | github_trending | reddit
+#     type: rss                 # rss | hackernews | arxiv | hf_papers | bluesky | lobsters
 #     name: Example AI Blog
 #     url: https://example.com/feed.xml
 #     tags: [news]

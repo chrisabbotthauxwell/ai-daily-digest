@@ -22,5 +22,9 @@ Not committed work. Each is independent and must respect the free-tier guardrail
 - **Tasks:** [ ] confirm that the contract needs no changes [ ] scaffold and generate the client [ ] feed and day picker [ ] write up a comparison (effort, bundle size, mobile editing experience).
 - **Risks:** Flutter web bundle size against the 250 MB limit (fine) and load time; the mobile-editing experience of Dart is a point of the comparison.
 
-## D. Smaller ideas
+## D. Deferred sources
+- Reddit (API terms/auth, cloud-IP blocking) and GitHub trending (no official API; scraping is brittle). Revisit if v1 sources feel thin.
+- X/Twitter: no free read/search tier as of 2026; only if the owner accepts pay-per-use costs (not free, so out of scope by default).
+
+## E. Smaller ideas
 - Custom domain on SWA (2 free), RSS output of the digest, weekly digest page, cross-day trending, email digest (needs a mail service, so likely not free).

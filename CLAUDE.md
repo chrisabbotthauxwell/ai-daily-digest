@@ -27,7 +27,7 @@ Browser --> Static Web Apps (React SPA) --> API (/days, /days/{date})
 | `web/` | React + Vite + TypeScript + MUI |
 | `infra/` | Bicep (IaC) |
 | `docs/plans/` | Numbered build plans, 00-08 |
-| `sources.yaml` | Source registry (RSS, HN, arXiv, GitHub trending, Reddit) |
+| `sources.yaml` | Source registry (RSS, HN, arXiv, HF Daily Papers, Bluesky, Lobsters) |
 
 ## Commands
 

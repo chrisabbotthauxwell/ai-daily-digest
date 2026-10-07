@@ -16,14 +16,18 @@ Numbered, in rough dependency order. Each has goal, scope, tasks (checkboxes), a
 
 Phases 03, 04 and 05 can proceed in parallel once 01 is done and the data model in 03 is agreed. 02 is needed before 06.
 
+## Resolved (2026-10-07)
+
+- Region `uksouth`; pay-as-you-go subscription, no existing free-tier Cosmos DB account.
+- SWA deploy token stored as a GitHub Actions secret.
+- `sources.yaml` baked into the ingest image (revisit later if needed).
+- Reddit and GitHub trending deferred to plan 08; X/Twitter rejected (no free tier). v1 adds HF Daily Papers, Bluesky, Lobsters.
+- PR previews: SWA built-in; per-PR Container Apps revision is an optional experiment, shared prod API otherwise.
+
 ## Open questions for the owner
 
-1. **Region:** assumed `uksouth`. Confirm, or pick another (check Cosmos free tier and Container Apps availability).
-2. **Subscription:** is it pay-as-you-go with no existing free-tier Cosmos DB account?
-3. **Log Analytics 5 GB/month:** unconfirmed on the official pricing page and possibly per billing account. Verify in the portal.
-4. **Container Apps Jobs and the free grant:** unconfirmed whether job compute counts against it (assumed yes).
-5. **SWA deploy token:** the one stored secret (plan 06). Acceptable?
-6. **`sources.yaml` delivery:** baked into the ingest image (default) or fetched from GitHub at runtime (faster source changes, no redeploy, but an extra runtime dependency)?
-7. **Reddit and GitHub trending:** both are fragile (API terms, no official trending API). Keep in v1 or defer?
-8. **Previews:** share the production API (default) or accept no previews that need a backend?
-9. **Tooling defaults assumed:** uv and ruff (Python), pnpm (web).
+1. **Log Analytics 5 GB/month:** unconfirmed on the official pricing page and possibly per billing account. Verify in the portal.
+2. **Container Apps Jobs and the free grant:** unconfirmed whether job compute counts against it (assumed yes).
+3. **Bluesky search:** confirm the unauthenticated endpoint and limits in the official docs before plan 03.
+4. **Per-PR API revisions:** verify Container Apps revision labels, limits and billing before committing to the experiment.
+5. **Tooling defaults assumed:** uv and ruff (Python), pnpm (web).
