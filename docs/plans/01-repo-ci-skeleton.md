@@ -10,9 +10,9 @@ Project skeletons (hello-world level), tooling config, GitHub Actions CI. No dep
 - [x] `api/`: `pyproject.toml` (uv), ruff config, pytest, a trivial `/health` test
 - [x] `ingest/`: same toolchain, trivial test
 - [x] `web/`: Vite + React + TS (strict) + MUI, eslint, vitest, `pnpm build`
-- [ ] `infra/`: placeholder `main.bicep` that passes `az bicep build`
-- [ ] `.github/workflows/ci-api.yml`, `ci-ingest.yml`, `ci-web.yml`, `ci-infra.yml` with path filters; each runs lint, test, build
-- [ ] A required-status "CI OK" aggregate job so path-filtered workflows don't block merging
+- [x] `infra/`: placeholder `main.bicep` that passes `az bicep build`
+- [x] `.github/workflows/ci-api.yml`, `ci-ingest.yml`, `ci-web.yml`, `ci-infra.yml` with path filters; each runs lint, test, build
+- [x] A required-status "CI OK" aggregate job so path-filtered workflows don't block merging
 - [ ] `sources.yaml` JSON-schema validation job (cheap and phone-friendly)
 - [ ] Dependabot config (weekly, grouped)
 - [ ] Pin Actions to versions or SHAs; minimal `permissions:` per workflow

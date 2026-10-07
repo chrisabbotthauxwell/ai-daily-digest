@@ -1,0 +1,71 @@
+name: ci
+# Always runs on PRs; path filtering happens inside so the required "CI OK"
+# check is always reported and never deadlocks a merge.
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      api: ${{ steps.f.outputs.api }}
+      ingest: ${{ steps.f.outputs.ingest }}
+      web: ${{ steps.f.outputs.web }}
+      infra: ${{ steps.f.outputs.infra }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
+        id: f
+        with:
+          filters: |
+            api:
+              - 'api/**'
+              - '.github/workflows/ci*.yml'
+            ingest:
+              - 'ingest/**'
+              - 'sources.yaml'
+              - '.github/workflows/ci*.yml'
+            web:
+              - 'web/**'
+              - '.github/workflows/ci*.yml'
+            infra:
+              - 'infra/**'
+              - '.github/workflows/ci*.yml'
+  api:
+    needs: changes
+    if: needs.changes.outputs.api == 'true'
+    uses: ./.github/workflows/ci-api.yml
+  ingest:
+    needs: changes
+    if: needs.changes.outputs.ingest == 'true'
+    uses: ./.github/workflows/ci-ingest.yml
+  web:
+    needs: changes
+    if: needs.changes.outputs.web == 'true'
+    uses: ./.github/workflows/ci-web.yml
+  infra:
+    needs: changes
+    if: needs.changes.outputs.infra == 'true'
+    uses: ./.github/workflows/ci-infra.yml
+  ci-ok:
+    name: CI OK
+    needs: [changes, api, ingest, web, infra]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Fail if any job failed or was cancelled
+        run: |
+          if [ "${{ contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled') }}" = "true" ]; then
+            echo "One or more CI jobs failed"; exit 1
+          fi
