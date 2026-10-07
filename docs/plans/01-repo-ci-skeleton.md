@@ -7,8 +7,8 @@ Working lint/test/build pipelines for each package on every PR, with empty-but-v
 Project skeletons (hello-world level), tooling config, GitHub Actions CI. No deploy (see 06). No product logic.
 
 ## Tasks
-- [ ] `api/`: `pyproject.toml` (uv), ruff config, pytest, a trivial `/health` test
-- [ ] `ingest/`: same toolchain, trivial test
+- [x] `api/`: `pyproject.toml` (uv), ruff config, pytest, a trivial `/health` test
+- [x] `ingest/`: same toolchain, trivial test
 - [ ] `web/`: Vite + React + TS (strict) + MUI, eslint, vitest, `pnpm build`
 - [ ] `infra/`: placeholder `main.bicep` that passes `az bicep build`
 - [ ] `.github/workflows/ci-api.yml`, `ci-ingest.yml`, `ci-web.yml`, `ci-infra.yml` with path filters; each runs lint, test, build
