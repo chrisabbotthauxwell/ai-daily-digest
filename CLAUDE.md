@@ -31,13 +31,12 @@ Browser --> Static Web Apps (React SPA) --> API (/days, /days/{date})
 
 ## Commands
 
-Not implemented yet. Plan 01 will define and document them here; the intended set is:
-
-- Python (`api/`, `ingest/`): `uv sync`, `uv run ruff check .`, `uv run ruff format .`, `uv run pytest`
+- Python (`api/`, `ingest/`; run inside each dir): `uv sync`, `uv run ruff check .`, `uv run ruff format .`, `uv run pytest`
 - Web (`web/`): `pnpm install`, `pnpm lint`, `pnpm test`, `pnpm build`, `pnpm dev`
-- Infra: `az bicep build -f infra/main.bicep`, `az deployment group what-if ...`
+- Sources: `uvx check-jsonschema --schemafile sources.schema.json sources.yaml`
+- Infra: `az bicep build --file infra/main.bicep` (not yet run locally; CI runs it)
 
-Update this section as soon as real commands exist. Do not document commands that don't work.
+CI (`.github/workflows/ci.yml`) runs path-filtered checks and a required aggregate job named `CI OK`.
 
 ## Conventions
 
