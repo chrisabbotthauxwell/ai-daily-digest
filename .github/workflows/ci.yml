@@ -24,8 +24,8 @@ jobs:
       infra: ${{ steps.f.outputs.infra }}
       sources: ${{ steps.f.outputs.sources }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: dorny/paths-filter@v3
+      - uses: actions/checkout@v7
+      - uses: dorny/paths-filter@v4
         id: f
         with:
           filters: |
@@ -68,8 +68,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v5
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v7
       - run: uvx check-jsonschema --schemafile sources.schema.json sources.yaml
   ci-ok:
     name: CI OK
