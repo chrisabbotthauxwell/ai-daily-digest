@@ -1,0 +1,12 @@
+# Source registry for the ingest job. Adding a source = a small PR editing this file.
+# Schema is a draft; plan 03 finalises it. No live sources are enabled yet.
+#
+# sources:
+#   - id: example-blog          # unique, kebab-case
+#     type: rss                 # rss | hackernews | arxiv | hf_papers | bluesky | lobsters
+#     name: Example AI Blog
+#     url: https://example.com/feed.xml
+#     tags: [news]
+#     weight: 1.0               # ranking multiplier (0.0-2.0)
+#     enabled: true
+sources: []
