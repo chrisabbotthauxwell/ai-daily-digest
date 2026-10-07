@@ -13,11 +13,11 @@ Project skeletons (hello-world level), tooling config, GitHub Actions CI. No dep
 - [x] `infra/`: placeholder `main.bicep` that passes `az bicep build`
 - [x] `.github/workflows/ci-api.yml`, `ci-ingest.yml`, `ci-web.yml`, `ci-infra.yml` with path filters; each runs lint, test, build
 - [x] A required-status "CI OK" aggregate job so path-filtered workflows don't block merging
-- [ ] `sources.yaml` JSON-schema validation job (cheap and phone-friendly)
-- [ ] Dependabot config (weekly, grouped)
-- [ ] Pin Actions to versions or SHAs; minimal `permissions:` per workflow
-- [ ] Update CLAUDE.md "Commands" with the real commands
-- [ ] PR template (what / why / how verified)
+- [x] `sources.yaml` JSON-schema validation job (cheap and phone-friendly)
+- [x] Dependabot config (weekly, grouped)
+- [x] Pin Actions to versions or SHAs; minimal `permissions:` per workflow
+- [x] Update CLAUDE.md "Commands" with the real commands
+- [x] PR template (what / why / how verified)
 - **Owner (manual):** enable branch protection on `main` requiring the CI aggregate check
 
 ## Acceptance criteria

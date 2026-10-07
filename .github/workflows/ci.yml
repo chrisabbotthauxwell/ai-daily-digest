@@ -22,6 +22,7 @@ jobs:
       ingest: ${{ steps.f.outputs.ingest }}
       web: ${{ steps.f.outputs.web }}
       infra: ${{ steps.f.outputs.infra }}
+      sources: ${{ steps.f.outputs.sources }}
     steps:
       - uses: actions/checkout@v4
       - uses: dorny/paths-filter@v3
@@ -37,6 +38,10 @@ jobs:
               - '.github/workflows/ci*.yml'
             web:
               - 'web/**'
+              - '.github/workflows/ci*.yml'
+            sources:
+              - 'sources.yaml'
+              - 'sources.schema.json'
               - '.github/workflows/ci*.yml'
             infra:
               - 'infra/**'
@@ -57,9 +62,18 @@ jobs:
     needs: changes
     if: needs.changes.outputs.infra == 'true'
     uses: ./.github/workflows/ci-infra.yml
+  sources:
+    needs: changes
+    if: needs.changes.outputs.sources == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - run: uvx check-jsonschema --schemafile sources.schema.json sources.yaml
   ci-ok:
     name: CI OK
-    needs: [changes, api, ingest, web, infra]
+    needs: [changes, api, ingest, web, infra, sources]
     if: always()
     runs-on: ubuntu-latest
     timeout-minutes: 5
